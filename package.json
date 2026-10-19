@@ -1,0 +1,56 @@
+{
+  "name": "vite-plugin-client-error-logger",
+  "version": "0.1.4",
+  "description": "Vite 插件：在开发模式下收集浏览器运行时错误并写入本地日志",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "error-logging",
+    "sandbox",
+    "frontend-monitoring"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huangyuanyin/vite-plugin-client-error-logger.git"
+  },
+  "homepage": "https://github.com/huangyuanyin/vite-plugin-client-error-logger#readme",
+  "bugs": {
+    "url": "https://github.com/huangyuanyin/vite-plugin-client-error-logger/issues"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format cjs,esm --out-dir dist",
+    "clean": "rimraf dist",
+    "pretest": "pnpm run build",
+    "test": "node --test test/plugin.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm run typecheck && pnpm run build"
+  },
+  "peerDependencies": {
+    "vite": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "rimraf": "^5.0.10",
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.3",
+    "vite": "^8.3.0"
+  }
+}
